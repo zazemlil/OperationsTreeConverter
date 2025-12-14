@@ -29,10 +29,8 @@
 }
 
 %token <std::shared_ptr<syntax_tree::LiteralFloat>> T_LITERAL_FLOAT
-%left <std::shared_ptr<syntax_tree::ASTNode>> T_PLUS
-%left <std::shared_ptr<syntax_tree::ASTNode>> T_MINUS
-%left <std::shared_ptr<syntax_tree::ASTNode>> T_MUL
-%left <std::shared_ptr<syntax_tree::ASTNode>> T_DIV
+%left <std::shared_ptr<syntax_tree::ASTNode>> T_PLUS T_MINUS // low priority
+%left <std::shared_ptr<syntax_tree::ASTNode>> T_MUL T_DIV // high priority
 %token <std::shared_ptr<syntax_tree::ASTNode>> T_PARENTHESIS_OPEN
 %token <std::shared_ptr<syntax_tree::ASTNode>> T_PARENTHESIS_CLOSE
 %token T_END_OF_FILE
