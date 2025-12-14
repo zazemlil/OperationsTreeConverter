@@ -11,5 +11,5 @@ private:
     Node processNode(Node root, Node current);
     
 public:
-    syntax_tree::AST convert(syntax_tree::AST ast);
+    syntax_tree::AST convert(syntax_tree::AST inferenceTree);
 };

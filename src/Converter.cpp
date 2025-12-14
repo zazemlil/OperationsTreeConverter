@@ -1,7 +1,7 @@
 #include "Converter.h"
     
-syntax_tree::AST Converter::convert(syntax_tree::AST ast) {
-    Node root = ast.getRoot();
+syntax_tree::AST Converter::convert(syntax_tree::AST inferenceTree) {
+    Node root = inferenceTree.getRoot();
     if (!root) return syntax_tree::AST();
     
     while (syntax_tree::utils::hasNonTerminal(root)) {
