@@ -30,7 +30,8 @@
 
 %token <std::shared_ptr<syntax_tree::LiteralFloat>> T_LITERAL_FLOAT
 %left <std::shared_ptr<syntax_tree::ASTNode>> T_PLUS T_MINUS // low priority
-%left <std::shared_ptr<syntax_tree::ASTNode>> T_MUL T_DIV // high priority
+%left <std::shared_ptr<syntax_tree::ASTNode>> T_MUL T_DIV // medium priority
+%right UMINUS // high priority
 %token <std::shared_ptr<syntax_tree::ASTNode>> T_PARENTHESIS_OPEN
 %token <std::shared_ptr<syntax_tree::ASTNode>> T_PARENTHESIS_CLOSE
 %token T_END_OF_FILE
@@ -79,7 +80,7 @@ expr: num {
         n->addStatement($3);
         $$ = n;  
     }
-    | T_MINUS expr { 
+    | T_MINUS expr %prec UMINUS { 
         auto n = std::make_shared<syntax_tree::ASTNode>("U");
         n->addStatement($1);
         n->addStatement($2);
