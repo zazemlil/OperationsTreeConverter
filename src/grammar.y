@@ -42,7 +42,9 @@
 %%
 
 s: expr T_END_OF_FILE {
-    result = syntax_tree::AST($1);
+    auto n = std::make_shared<syntax_tree::ASTNode>("E");
+    n->addStatement($1);
+    result = syntax_tree::AST(n);
     YYACCEPT;
 };
 
@@ -93,7 +95,11 @@ expr: num {
         $$ = n; 
     };
 
-num: T_LITERAL_FLOAT { $$ = $1; };
+num: T_LITERAL_FLOAT { 
+    auto n = std::make_shared<syntax_tree::ASTNode>("FLOAT");
+    n->addStatement($1);
+    $$ = n; 
+};
 
 %%
 

@@ -62,9 +62,7 @@ public:
     
     // Проверка, является ли узел семантически пустым
     virtual bool isSemanticallyEmpty() const {
-        return node_type == "(" || node_type == ")"
-            || node_type == "NUM" || node_type == "B" 
-            || node_type == "U" || node_type == "E";
+        return node_type == "(" || node_type == ")";
     }
 
     void setStatements(std::vector<std::shared_ptr<ASTNode>>& new_statements) { 
